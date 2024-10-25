@@ -1,12 +1,43 @@
 export type OS = "linux" | "macos" | "windows"
 export type Arch = "x86_64" | "aarch64"
 
+--[=[
+	@type SpawnOptionsStdioKind
+	@within Process
+
+	A union of the possible types of stdio handling of spawned processes. See `SpawnOptions` for more info.
+
+	* `default` - Writes stdout and stderr to to return values
+	* `none` - Does not create any pipes and performs no forwarding, returned values are empty strings
+	* `forward` - Forwards parent's stdin to child, and pipes child's stdout
+	* `inherit` -  Forwards parent's stdin to child, and pipes child's stdout to parent but also writes to return values
+]=]
 export type SpawnOptionsStdioKind = "default" | "inherit" | "forward" | "none"
+
+--[=[
+	@interface SpawnOptionsStdio
+	@within Process
+
+	A dictionary of options for on how to handle stdio piping / forwarding:
+
+	* `stdout` - What to do with the child's stdout
+	* `stderr` - What to do with the child's stderr
+
+	See `SpawnOptionsStdioKind` for possible options, and their respective behaviors.
+]=]
 export type SpawnOptionsStdio = {
 	stdout: SpawnOptionsStdioKind?,
 	stderr: SpawnOptionsStdioKind?,
 }
 
+--[=[
+	@interface ExecuteOptionsStdio
+	@within Process
+
+	A dictionary of options for on extra data to pass the child in `process.exec`:
+
+	* `stdin` - String to write to the child's stdin
+]=]
 export type ExecuteOptionsStdio = SpawnOptionsStdio & {
 	stdin: string?,
 }
