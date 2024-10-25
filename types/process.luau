@@ -112,7 +112,6 @@ end
 
 --[=[
 	@class ChildProcessWriter
-	@within Process
 
 	A writer class to write data to a child process' streams in realtime.
 ]=]
