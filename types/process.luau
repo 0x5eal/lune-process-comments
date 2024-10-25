@@ -2,7 +2,7 @@ export type OS = "linux" | "macos" | "windows"
 export type Arch = "x86_64" | "aarch64"
 
 --[=[
-	@type SpawnOptionsStdioKind
+	@type SpawnOptionsStdioKind "default" | "inherit" | "forward" | "none"
 	@within Process
 
 	A union of the possible types of stdio handling of spawned processes. See `SpawnOptions` for more info.
