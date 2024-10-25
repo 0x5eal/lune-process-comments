@@ -78,7 +78,6 @@ export type ExecuteOptions = SpawnOptions & {
 
 --[=[
 	@class ChildProcessReader
-	@within Process
 
 	A reader class to read data from a child process' streams in realtime.
 ]=]
